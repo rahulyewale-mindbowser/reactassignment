@@ -1,0 +1,54 @@
+.form-container{
+    text-align: center;
+    width: 100%;
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    padding: 40px 40px;
+    border: 1px solid #b1aeae;
+}
+
+.form-text-box {
+    margin-bottom: 15px !important;
+
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.nav-link{
+    font-size: 20px;
+    line-height: 55px;
+    padding: 0 20px;
+}
+
+.nav-link:hover{
+    color: #ffffff;
+    background-color: #d37878;
+}
+
+.mb-text{
+    color: rgb(49, 210, 250);
+    font-size: 30px;
+    line-height: 60px;
+    width: fit-content;
+    margin-left: 50px;
+    font-weight: 600;
+}
+
+.date{
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+#hobby{
+    padding: 1rem;
+
+}
