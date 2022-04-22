@@ -28,14 +28,6 @@ function CardList(props) {
         localStorage.setItem("userList", JSON.stringify([]))
     }
 
-    var text;
-
-  if (state) {
-    text = 'Card view';
-    
-  } else {
-    text = 'Table view';
-  };
 
     return (
         <div style={{padding: "0 50px"}}>
@@ -48,13 +40,14 @@ function CardList(props) {
             </Button>
             
       <div style={{textAlign:"right",marginTop: "20px", marginBottom: "50px"}}>
-      {text}
+      {"Table View"}
           <Switch
         checked={state}
         onChange={handleSwitchChange}
         color="primary" 
         align ="right"
-      /></div>
+      />{"Card View"}
+      </div>
             
            </div>
 

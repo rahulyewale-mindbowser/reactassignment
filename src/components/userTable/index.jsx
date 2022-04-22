@@ -49,8 +49,12 @@ function UserTable({ userList }) {
 
             </table>
 
-            <Dialog open={dialogOpen} onClose={() => { setOpen(false) }}>
-                <div style={{ padding: "80px", width: "400px" }}>
+            <Dialog open={dialogOpen} onClose={() => { setOpen(true) }}>
+                <div style={{ padding: "10px", width: "auto" }}>
+
+                <div style={{float: "right", cursor: "pointer"}}>
+                        <h2><span onClick={()=>{setOpen(false)}}>X</span></h2>
+                    </div>
                     <div><h2>User Details</h2></div>
                     <div><p><strong> Name: </strong>{user.name}</p></div>
                     <div><p><strong> BirthDate: </strong>{user.birthdate}</p></div>
@@ -61,6 +65,8 @@ function UserTable({ userList }) {
                     <div><p><strong> Country: </strong>{user.country}</p></div>
                     <div><p><strong> ShortBio: </strong>{user.shortbio}</p></div>
                     <div><p><strong> LongBio: </strong>{user.longbio}</p></div>
+                    
+
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <div><Button variant="contained" color="primary"
                             style={{ width: "150px", marginTop: "20px", marginBottom: "50px" }}>Update user</Button></div>

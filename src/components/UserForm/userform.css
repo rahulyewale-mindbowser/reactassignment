@@ -1,15 +1,17 @@
 .form-container{
     text-align: center;
-    width: 100%;
+    width: 70vw;
 }
 
 .form-box{
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin-left: auto;
+    display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-gap: 1rem;
+    /* max-width: 400px; */
+    /* margin-left: auto;
     margin-right: auto;
-    margin-top: 70px;
+    margin-top: 70px; */
+    margin: 2rem;
     padding: 40px 40px;
     border: 1px solid #b1aeae;
 }

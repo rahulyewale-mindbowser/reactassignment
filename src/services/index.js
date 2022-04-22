@@ -7,15 +7,18 @@ const config = {
   },
 };
 
-// export const getCollegesAPI = (collegeName, country) => {
-//     return axios.get(`${URL.getColleges}${collegeName}${country? "&country=" + country : ""}`);
-// }
-
-export const getCollege = ()=>{
-  return axios.get(`${URL.getColleges}`)
-  // console.log(`${URL.getColleges}`);
+export const getCollegesAPI = (country,collegeName) => {
+    return axios.get(`${URL.getColleges}${collegeName? "&collegeName=" + collegeName: ""}${country}`);
 }
+
+// export const getCollege = ()=>{
+//   return axios.get(`${URL.getColleges}`)
+//   // console.log(`${URL.getColleges}`);
+// }
 
 export const getcountries =()=>{
   return axios.get(`${URL.getcountry}`)
+}
+export const getCollege = (country) => {
+  return axios.get(`http://universities.hipolabs.com/search?country=${country}`);
 }
