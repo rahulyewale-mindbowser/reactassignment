@@ -38,7 +38,7 @@ function UserTable({ userList }) {
                             <td>{user.address}</td>
                             <td>{user.gender}</td>
                             <td>{user.college}</td>
-                            <td>{user.hobbies}</td>
+                            <td>{user.hobbies }</td>
                             <td>{user.country}</td>
                             <td>{user.shortbio}</td>
                             <td>{user.longbio}</td>
@@ -50,28 +50,28 @@ function UserTable({ userList }) {
             </table>
 
             <Dialog open={dialogOpen} onClose={() => { setOpen(true) }}>
-                <div style={{ padding: "10px", width: "auto" }}>
+                <div style={{ padding: "20px", width: "400px"}}>
 
                 <div style={{float: "right", cursor: "pointer"}}>
                         <h2><span onClick={()=>{setOpen(false)}}>X</span></h2>
                     </div>
                     <div><h2>User Details</h2></div>
-                    <div><p><strong> Name: </strong>{user.name}</p></div>
-                    <div><p><strong> BirthDate: </strong>{user.birthdate}</p></div>
-                    <div><p><strong> Address: </strong>{user.address}</p></div>
-                    <div><p><strong> Gender: </strong>{user.gender}</p></div>
-                    <div><p><strong> College: </strong>{user.college}</p></div>
-                    <div><p><strong> Hobbies: </strong>{user.hobbies}</p></div>
-                    <div><p><strong> Country: </strong>{user.country}</p></div>
-                    <div><p><strong> ShortBio: </strong>{user.shortbio}</p></div>
-                    <div><p><strong> LongBio: </strong>{user.longbio}</p></div>
+                    <div><strong> Name: </strong>{user.name}</div>
+                    <div><strong> BirthDate: </strong>{user.birthdate}</div>
+                    <div><strong> Address: </strong>{user.address}</div>
+                    <div><strong> Gender: </strong>{user.gender}</div>
+                    <div><strong> College: </strong>{user.college}</div>
+                    <div><strong> Hobbies: </strong>{user.hobbies}</div>
+                    <div><strong> Country: </strong>{user.country}</div>
+                    <div><strong> ShortBio: </strong>{user.shortbio}</div>
+                    <div><strong> LongBio: </strong>{user.longbio}</div>
                     
 
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <div><Button variant="contained" color="primary"
-                            style={{ width: "150px", marginTop: "20px", marginBottom: "50px" }}>Update user</Button></div>
+                            style={{ width: "150px", marginTop: "20px", marginBottom: "20px" }}>Update user</Button></div>
                         <div><Button variant="contained" color="secondary"
-                            style={{ width: "150px", marginTop: "20px", marginBottom: "50px" }}>Delete user</Button></div></div>
+                            style={{ width: "150px", marginTop: "20px", marginBottom: "20px" }}>Delete user</Button></div></div>
 
                 </div>
             </Dialog>

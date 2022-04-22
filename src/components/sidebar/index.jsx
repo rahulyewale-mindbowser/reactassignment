@@ -18,7 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import PersonAddAltTwoToneIcon from '@mui/icons-material/PersonAddAltTwoTone';
 import RecentActorsTwoToneIcon from '@mui/icons-material/RecentActorsTwoTone';
-// import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone';
+import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone';
 
 
 const navlinks = [
@@ -32,11 +32,11 @@ const navlinks = [
         icon: <PersonAddAltTwoToneIcon color='primary' fontSize="large" />,
         to: "/userform",
       },
-    //   {
-    //     name: "College",
-    //     icon: <AccountBalanceTwoToneIcon color="primary" fontSize="large" />,
-    //     to: "/college",
-    //   },
+      {
+        name: "College",
+        icon: <AccountBalanceTwoToneIcon color="primary" fontSize="large" />,
+        to: "/colleges",
+      },
 ]
 
 const drawerWidth = 240;
@@ -136,19 +136,27 @@ export default function MiniDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-           Users
-          </Typography>
+          {
+          !open?
+                (<Typography variant="h6" noWrap component="div" sx={{mr:4}} >
+                     Users
+                </Typography>)
+            :
+                <></>
+            }
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+        <Typography variant="h6" noWrap component="div" sx={{mr:4}} >
+          <strong style={{color:"#4285F4"}}> Users</strong>
+        </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List >
+        <List style={{display:'flex',flexDirection:'column'}}>
           {
               navlinks.map((navto,i)=>(
                   <ListItemButton

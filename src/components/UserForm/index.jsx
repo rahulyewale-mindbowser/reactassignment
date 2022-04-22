@@ -1,38 +1,31 @@
 import { useState, useEffect } from 'react';
 import './userform.css';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button,FormHelperText } from '@material-ui/core';
 import { useNavigate } from "react-router-dom";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
+import {FormControlLabel,RadioGroup ,Radio,FormLabel,Select,MenuItem,InputLabel,Checkbox,FormGroup,FormControl} from '@mui/material';
 import * as services from '../../services';
-import { useForm, Controller } from "react-hook-form";
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 const hobbie =["Reading", "Gaming", "Traveling", "Drawing"];
 
-function UserForm(props) {
-    const { register, handleSubmit,  formState: { errors }} = useForm();
+function UserForm() {
     const navigate = useNavigate();
 
 
     const [name, setName] = useState("");
     const [birthdate, setBirthdate] = useState("");
     const [address, setAddress] = useState("");
+
     const [collegelist, setCollegelist] = useState([]);
     const [college, setCollege] = useState("");
+
     const [gender, setGender] = useState("");
+
     const [countrylist, setCountrylist] = useState([]);
     const [country, setCountry] = useState("");
+
     const [hobbies, setHobbies] = useState([]);
     const [visible, setVisible] = useState(false);
     const[otherStr, setStr]= useState("");
@@ -41,13 +34,110 @@ function UserForm(props) {
     const [shortbio, setShortbio] = useState("");
     const [longbio, setLongbio] = useState("");
 
-    const [nameErr, setnameErr] = useState(false);
+    const[errors,setErrors]=useState({});
 
-    const date = new Date();
+    // const countryValid = () =>{
+    //   if(country.length===0){
+    //     return ("Select country, field cannot be empty*");
+    //   }
+    //   else{
+    //     return ("");
+    //   }
+    // }
+    
+    const nameValid = () =>{
+      if(name.length===0){
+        return ("This field is Required*");
+      }else if(name.trim().length===0){
+        return ("Enter valid name, spaces detected");
+      }else if(name.length<2){
+        return ("Single character not allowed*")
+      }
+      else{
+        return ("");
+      }
+    }
+    
+    const addressValid = () =>{
+      if(address.length===0){
+        return ("This field is Required*");
+      }else if(address.trim().length===0){
+        return ("Enter valid Bio, spaces detected*");
+      }else if(address.length<3){
+        return ("Address too short*")
+      }
+      else if(address.length>150){
+        return ("Address too Long*")
+      }
+      else{
+        return ("");
+      }
+    }
+    
+    const shortbioValid = () =>{
+      if(shortbio.length===0){
+        return ("This field is Required*");
+      }else if(shortbio.trim().length===0){
+        return ("Enter valid Bio, spaces detected*");
+      }else if(shortbio.length<10){
+        return ("Bio too short*")
+      }
+      else if(shortbio.length>30){
+        return ("Bio too Long*")
+      }
+      else{
+        return ("");
+      }
+    }
+    
+    
+    
+    const longbioValid = () =>{
+      if(longbio.length===0){
+        return ("This field is Required*");
+      }else if(longbio.trim().length===0){
+        return ("Enter valid Bio, spaces detected*");
+      }else if(longbio.length<50){
+        return ("Bio too short*")
+      }
+      else if(longbio.length>100){
+        return ("Bio too Long*")
+      }
+      else{
+        return ("");
+      }
+    }
+    
+    const hobbiesValid = () =>{
+      if(hobbies.length===0){
+        return ("This field is required");
+      }
+      else{
+        return ("");
+      }
+    } 
+    
+    const validate = () =>{
+        let temp = {}
+        temp.name = nameValid();
+        temp.address= addressValid();
+        // temp.country = countryValid();
+        temp.hobbies = hobbiesValid();
+        temp.college = college.length!==0 ? "" :"This field is required";
+        temp.shortbio = shortbioValid();
+        temp.longbio = longbioValid();
+        setErrors({
+          ...temp
+        })
+    
+        return Object.values(temp).every(x => x === "")
+      }
+    
 
 
     const setEmpty = () => {
         setName("")
+        setBirthdate("")
         setAddress("")
         setCollege("")
         setCountry("")
@@ -68,23 +158,21 @@ function UserForm(props) {
         }
     }
 
-    const onSubmitFun = () => {
-        if (name == "" || birthdate == "" || college == "" || hobbies == "" || country == "" || gender == "" || address == "" || shortbio == "" || longbio == "") {
-            alert(" please fill all the feilds")
-        }
-        else {
-            var user = {
-                name: name,
-                birthdate: birthdate,
-                college: college,
-                hobbies: hobbies,
-                country: country,
-                gender: gender,
-                address: address,
-                shortbio: shortbio,
-                longbio: longbio
-            }
-            setEmpty()
+            const onSubmitFun = () => {
+                // e.preventDefault();
+                if(validate()){
+                    var user = {
+                        name: name,
+                        birthdate: birthdate,
+                        college: college,
+                        hobbies: hobbies,
+                        country: country,
+                        gender: gender,
+                        address: address,
+                        shortbio: shortbio,
+                        longbio: longbio
+                    };
+                    setEmpty()
 
             setLocalstorage(user)
 
@@ -92,18 +180,14 @@ function UserForm(props) {
 
         }
 
-    }
+                }
+            
+            
 
-    const otherhobby = () => {
-        // setVisible(!visible);
-        setVisible(prev => !prev);
 
-        console.log("called");
-    }
-
-    const handleGender = (event) => {
-        setGender((event.target.value));
-    };
+    // const handleGender = (event) => {
+    //     setGender((event.target.value));
+    // };
 
     const handleCountry = (e) => {
         setCountry(e.target.value);
@@ -121,7 +205,7 @@ function UserForm(props) {
     const handleHobbies = (e) => {
         // setHobbies(hobbies + "," + e.target.name)
         const index = hobbies.indexOf(e.target.value)
-        if(index==-1){
+        if(index===-1){
             setHobbies([...hobbies,e.target.value])
 
         }
@@ -133,14 +217,6 @@ function UserForm(props) {
     const handleOthertextEvent =(e)=>{
         setStr(e.target.value)
     }
-    //   const onhobbies =e=>{
-    //       var {name,checked} =e.target;
-
-    //       setHobbies(e=>{
-    //           var selecthobbies =e.hobbies;
-    //           selecthobbies[name]=checked;
-    //       })
-    //   }
 
     useEffect(() => {
         (async function () {
@@ -164,34 +240,9 @@ function UserForm(props) {
     }, [])
 
     
-        // const collegelists =()=>{
-        //      if(country){
-        //         services.getCollegesAPI(country,"")
-        //         .then(response => {
-        //              console.log(response.data);
-        //             setCollegelist(response.data);
-        //         })
-        //         .catch(e => {
-        //             console.log(e)
-        //         })
-        //      }
-        // }
-    // const today = moment();
-    // const disableFutureDt = current => {
-    //     return current.isBefore(today)
-    // }
-    const validname = new RegExp(
-        '[a-zA-Z]$'
-     );
 
-     const validate = () => {
-        if (!validname.test(name)) {
-           setnameErr(true);
-        }
-        // if (!validPassword.test(password)) {
-        //    setPwdError(true);
-        // }
-     };
+   
+    
     return (
         <div className="form-container">
             <div>
@@ -200,15 +251,8 @@ function UserForm(props) {
             </div>
             <div className="form-box">
                 <TextField id="name" label="Name" name="uname" variant="outlined" value={name} 
-                    className="form-text-box" onChange={(e) => { setName(e.target.value) }} error={name ==""}  helperText={name ==""?"This feild required":""}
-                    // {...register("message",{
-                    //     required: "First Name is required.",
-                    //   })}
-                    //   // {...register("message", {
-                    //   //     required: "Required",
-                    //   //   })}
-                    //   error={(errors.uname)}
-                    //   helperText={errors.uname?.message}
+                    className="form-text-box" onChange={(e) => { setName(e.target.value) }} required
+                    {...(errors.name && {error:true,helperText:errors.name})}
                     />
 
                 {/* <input type="text" name="date" id="date" value={birthdate} className="form-text-box date" placeholder='Select Birth date' onFocus={(e) => (e.target.type = "date")}
@@ -234,8 +278,8 @@ function UserForm(props) {
                     
 
 
-                <TextField id="address" label="Address" variant="outlined" value={address} error={address==""} helperText={address ==""?"This feild required":""}
-                    className="form-text-box" onChange={(e) => { setAddress(e.target.value) }} required />
+                <TextField id="address" label="Address" variant="outlined" value={address} 
+                    className="form-text-box" onChange={(e) => { setAddress(e.target.value) }} required   {...(errors.address && {error:true,helperText:errors.address})}/>
 
                 <FormControl variant='outlined' > 
                     <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
@@ -245,7 +289,7 @@ function UserForm(props) {
                         name="row-radio-buttons-group"
                         defaultValue="male"
                         value={gender}
-                        onChange={handleGender}
+                        onChange={(e)=>{setGender(e.target.value)}}
                        
                     >
                         <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -254,7 +298,7 @@ function UserForm(props) {
                     </RadioGroup>
                 </FormControl>
 
-                <FormControl fullWidth className='form-text-box' error ={country==""} helperText={country ==""?"please select the country":""}>
+                <FormControl fullWidth className='form-text-box' >
                     <InputLabel id="demo-simple-select-country">Countries</InputLabel>
                     
                     <Select
@@ -279,6 +323,7 @@ function UserForm(props) {
                         {/* <MenuItem value={"india"}>India</MenuItem>
                         <MenuItem value={"Uk"}>Uk</MenuItem> */}
                     </Select>
+                    {/* {errors.country && <FormHelperText>{errors.country}</FormHelperText>} */}
                 </FormControl>
 
 
@@ -304,6 +349,7 @@ function UserForm(props) {
                         }
 
                     </Select>
+                    {errors.college && <FormHelperText>{errors.college}</FormHelperText>}
                 </FormControl>
 
 
@@ -352,49 +398,6 @@ function UserForm(props) {
                     }
 
 
-                    {/* <FormLabel component="legend">Select Hobbies</FormLabel>
-                    <FormGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group">
-                        <FormControlLabel
-                            control={
-                                <Checkbox name="reading" onChange={handleHobbies} />
-                            }
-                            label="Reading"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox name="drawing" onChange={handleHobbies} />
-                            }
-                            label="Drawing"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox name="gaming" onChange={handleHobbies} />
-                            }
-                            label="Gaming"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox name="travelling" onChange={handleHobbies} />
-                            }
-                            label="Traveling"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox name="other" onChange={otherhobby} />
-                            }
-                            label="other"
-                        />
-                    </FormGroup> */}
-
-                    {/* {
-                        visible && <TextField id="hobby" label=" other hobby" variant="outlined"
-                            className="form-text-box" onBlur={(e) => { setHobbies(hobbies + "," + e.target.value) }} />
-
-                    } */}
-
                 </FormControl>
 
 
@@ -402,11 +405,11 @@ function UserForm(props) {
 
 
 
-                <TextField id="bio" label="short Bio" variant="outlined" value={shortbio}
-                    className="form-text-box" onChange={(e) => { setShortbio(e.target.value) }} error={shortbio==""}helperText={shortbio ==""?"This feild required":""} required />
+                <TextField id="shortbio" label="short Bio" variant="outlined" value={shortbio}
+                    className="form-text-box" onChange={(e) => { setShortbio(e.target.value) }} {...(errors.shortbio && {error:true,helperText:errors.shortbio})} required />
 
-                <TextField id="bio" label="Long Bio" variant="outlined" value={longbio} multiline rows={(3)}
-                    className="form-text-box" onChange={(e) => { setLongbio(e.target.value) }} error={longbio==""}helperText={longbio ==""?"This feild required":""} required />
+                <TextField id="longbio" label="Long Bio" variant="outlined" value={longbio} multiline rows={(3)}
+                    className="form-text-box" onChange={(e) => { setLongbio(e.target.value) }} {...(errors.longbio && {error:true,helperText:errors.longbio})} required />
 
                 <Button variant="contained" color="primary"
                     style={{ width: "300px",height:'3rem', marginLeft: "auto", marginRight: "auto" ,alignSelf:'center'}}

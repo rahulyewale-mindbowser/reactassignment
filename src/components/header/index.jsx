@@ -10,8 +10,8 @@ function Header(props) {
             <div style={{flex:"1"}}><div className="mb-text">Users</div></div>
             <div className="clickable nav-link" onClick={()=>{navigate("/userlist")}}>User List</div>
             <div className="clickable nav-link" onClick={()=>{navigate("/userform")}}>User Form</div>
-            {/* <div className="clickable nav-link" onClick={()=>{navigate("/colleges")}}
-             style={{marginRight: "30px"}}>Colleges</div> */}
+            <div className="clickable nav-link" onClick={()=>{navigate("/colleges")}}
+             style={{marginRight: "30px"}}>Colleges</div>
         </div>
     )
 }
