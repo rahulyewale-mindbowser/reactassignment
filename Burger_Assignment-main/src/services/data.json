@@ -1,0 +1,162 @@
+[
+    {
+        "burger":[
+            {
+                "id": 101,
+                "name": "Aloo Tikki Burger",
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3L_prQbe8y4djcAjcHE1mXVq_9i9-dAIn4Q&usqp=CAU",
+                "price": 55,
+                "quantity":1
+            },
+            {
+                "id":102,
+                "name":"chicken burger",
+                "price":45,
+                "description":"This is the chicken burger",
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpo9S1ho-8I7ZEr31yeKorrMIMPu6g113IHQ&usqp=CAU",
+                "quantity":1
+
+            },
+            {
+
+                "id":103,
+                "name":"veg burger",
+                "price":50,
+                "description":"This is the veg burger",
+                "image":"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bgp6ns4mmijkwct3ylpm",
+                "quantity":1
+            }
+        ],
+        "fries": [
+            {
+              "id": 201,
+              "name": "Curly Fries",
+              "image":"https://media.istockphoto.com/photos/spicy-seasoned-curly-fries-picture-id483530333?k=20&m=483530333&s=612x612&w=0&h=60VEhRjdFZfth5OmkhtOa-6qBlDdvnEwApVRBvUzXos=",
+              "price": 40,
+              "quantity":1
+            },
+        
+            {
+              "id": 202,
+              "name": "Crinkle Cut Fries",
+              "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdeQONxXBEy2_Tk1KLktg5R_emaFxv-ccDUA&usqp=CAU",
+              "price": 55,
+              "quantity":1
+            },
+        
+            {
+              "id": 203,
+              "name": "Chilli Cheese Fries",
+              "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdr3-oVHda4x9ssGOC4qVtVVOOth5r85W58Q&usqp=CAU",
+              "price": 80,
+              "quantity":1
+            },
+        
+            {
+              "id": 204,
+              "name": "Potato Wedges",
+              "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnTgVA1EFAwIjIontfyYC0-D8XjuSFSMMrJw&usqp=CAU",
+              "price": 70,
+              "quantity":1
+            },
+        
+            {
+              "id": 205,
+              "name": "Sweet Potato Wedges",
+              "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQwNyg4IJf9NacDWbLrpV2AUcOATuH9GBPWw&usqp=CAU",
+              "price": 90,
+              "quantity":1
+            }
+          ],
+        "beverages":[
+            
+            {
+                "id": 301,
+                "name": "Coca Cola",
+                "price": 55,
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVZQsIvxXAkD_x9sEQCJo5LN2d-aByjxYlzg&usqp=CAU" ,
+                "quantity":1
+              },
+          
+              {
+                "id": 302,
+                "name": "Mountain Dew",
+                "price": 55,
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST09VOM6tiRYMtKuI5VgIcNxe1sbpMKEYSBg&usqp=CAU" ,
+                "quantity":1
+              },
+          
+              {
+                "id": 303,
+                "name": "Fanta",
+                "price": 55,
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3VEBfhh1ZNH3B485CGUKS2qWfzsm_zEVK6Q&usqp=CAU",
+                "quantity":1 
+              },
+          
+              {
+                "id": 304,
+                "name": "Cold Coffee",
+                "price": 45,
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSENY1Tl-teWl_5CE2cFC08e91CD5KJphyQKw&usqp=CAU" ,
+                "quantity":1
+              },
+          
+              {
+                "id": 305,
+                "name": "Hot Tea",
+                "price":30,
+                "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzgP9HjXSMgXKQh3VR1ojaAFPbF6AXTff0yA&usqp=CAU",
+                "quantity":1       
+                },
+                {
+                    "id":306,
+                    "name":"kesar lassi",
+                    "price":70,
+                    "image":"https://c.ndtvimg.com/2022-05/gt49aj5_mango-lassi_625x300_02_May_22.jpg",
+                    "quantity":1
+                }
+        ],
+        "combos": [
+            {
+              "id": 401,
+              "name": "2 Aloo Tikki Burger + 2 Curly Fries",
+              "price": 293,
+              "image":"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bgp6ns4mmijkwct3ylpm",
+              "items": ["2 Aloo Tikki Burger", "2 Curly Fries"],
+              "quantity":1
+            },
+        
+            {
+              "id": 402,
+              "name": "Chicken Burger + Mutton Burger + 3 Chilli Cheese Fries",
+              "price": 400,
+              "image":"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bgp6ns4mmijkwct3ylpm",
+              "items": ["Chicken Burger", "Mutton Burger", "3 Chilli Cheese Fries"],
+              "quantity":1
+            },
+        
+            {
+              "id": 403,
+              "name": "Double Aloo Tikki Burger + Potato Wedges + Cold Coffee",
+              "price": 175,
+              "image":"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bgp6ns4mmijkwct3ylpm",
+              "items": ["Double Aloo Tikki Burger", "Potato Wedges", "Cold Coffee"],
+              "quantity":1
+            },
+        
+            {
+              "id": 404,
+              "name": "2 Chicken Burger + 2 Egg Burger + 2 Fanta",
+              "price": 293,
+              "image":"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/bgp6ns4mmijkwct3ylpm",
+              "items": ["2 Chicken Burger", "2 Egg Burger", "2 Fanta"],
+              "quantity":1
+            }
+          ]
+          ,
+          "cart":[]
+
+        
+    }
+]
