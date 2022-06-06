@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/header';
+import UserForm from './components/userform';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div>
+      <Header />
     </div>
+
+      <Routes>
+          {/* <Route path="/userlist" element={<CardList />} /> */}
+          <Route path="/userform" element={<UserForm />} />
+          {/* <Route path="/colleges" element={<CollegeList />} /> */}
+
+          {/* <Route path={"*"} element={<Navigate replace to="/userlist" />} /> */}
+      </Routes>
+    </Router>
   );
 }
 
